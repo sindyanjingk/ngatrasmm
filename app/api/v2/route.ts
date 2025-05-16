@@ -3,14 +3,16 @@ import { NextRequest } from "next/server";
 export async function GET(req: NextRequest) {
 
     const service = req.nextUrl.searchParams.get("action")
+    
     const key = req.nextUrl.searchParams.get("key")
+    console.log({service, key});
     const token = "293413dd0682984a5e5665456d95f83140aab34e"
     if (key !== token) {
         return Response.json({
             message: "Invalid key",
         });
     }
-    if (service === "action") {
+    if (service === "services") {
         return Response.json([
             {
                 "service": 746,
